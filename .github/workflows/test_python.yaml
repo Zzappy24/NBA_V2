@@ -29,6 +29,6 @@ jobs:
       working-directory: ../
       run: |
         echo "PYTHONPATH=." >> $GITHUB_ENV
-        pwd
+        pip install pytest
         pytest
  
