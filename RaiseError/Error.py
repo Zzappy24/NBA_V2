@@ -1,0 +1,2 @@
+class DuplicateTrainingDataError(Exception):
+    pass
