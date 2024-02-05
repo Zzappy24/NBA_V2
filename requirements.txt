@@ -6,7 +6,6 @@ pandas
 scikit-learn
 numpy
 logging
-subprocess
 pathlib
 unittest
 joblib
