@@ -6,8 +6,6 @@ pandas
 scikit-learn
 numpy
 logging
-pathlib
-unittest
 joblib
 pytest
 pytest-shutil
