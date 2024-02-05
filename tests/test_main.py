@@ -1,3 +1,4 @@
+from path.path import CURATED_DATA_DIR_TEMP, TRANFORMED_DATA_DIR_TEMP, MODEL_TEMP_DIR, RAW_DATA_DIR_TEMP, RAW_DATA_DIR
 import unittest
 import subprocess
 import sys
@@ -5,7 +6,6 @@ import os
 import multiprocessing
 import threading
 import time
-from path.path import CURATED_DATA_DIR_TEMP, TRANFORMED_DATA_DIR_TEMP, MODEL_TEMP_DIR, RAW_DATA_DIR_TEMP, RAW_DATA_DIR
 import shutil
 from pathlib import Path
 from DataCleaning.DataCleaningFunctions import main_cleaning
