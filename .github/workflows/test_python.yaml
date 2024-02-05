@@ -16,6 +16,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: '.'  # Set the PYTHONPATH environment variable
 
     steps:
     - uses: actions/checkout@v3
