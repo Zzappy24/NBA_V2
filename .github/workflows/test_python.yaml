@@ -13,20 +13,22 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  execute:
     runs-on: ubuntu-latest
-
+   
+      
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
+      working-directory: .
       with:
         python-version: "3.10"
     
     - name: Test with pytest
       run: |
-        echo "PYTHONPATH=$HOME/NBA_V2" >> $GITHUB_ENV
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+
         pip install -e .
         pytest
  
