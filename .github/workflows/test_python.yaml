@@ -1,0 +1,31 @@
+name: Unittest and end-to-end test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  your-job-name:
+    runs-on: ubuntu-latest
+
+    env:
+      PYTHONPATH: '.'  # Set the PYTHONPATH environment variable
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt  # Adjust the command as needed
+
+    - name: Run Tests
+      run: pytest
+      # Add other configuration options if needed, e.g., environment variables
+
+    # Add other steps as needed for your workflow
