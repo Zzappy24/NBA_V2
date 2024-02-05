@@ -34,6 +34,7 @@ jobs:
 
       working-directory: ../
       run: |
+        export PYTHONPATH=$PYTHONPATH:/home/runner/work/MLOPS_NBA_V2/MLOPS_NBA_V2
         pwd
         pytest
  
