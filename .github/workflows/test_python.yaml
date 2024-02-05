@@ -26,7 +26,7 @@ jobs:
     
     - name: Test with pytest
       run: |
-        echo "PYTHONPATH=." >> $GITHUB_ENV
+        echo "PYTHONPATH=$HOME/NBA_V2" >> $GITHUB_ENV
         pip install pytest
         pytest
  
