@@ -28,6 +28,6 @@ jobs:
       run: |
         echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-        pip install pandas
+        pip install pandas pytest
         pytest
  
