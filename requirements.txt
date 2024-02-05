@@ -3,7 +3,7 @@ imblearn
 watchdog
 seaborn
 pandas
-sklearn
+scikit-learn
 numpy
 logging
 shutil
