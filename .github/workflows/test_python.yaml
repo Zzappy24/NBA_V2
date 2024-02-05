@@ -28,6 +28,6 @@ jobs:
       run: |
         echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-        pip install pandas pytest watchdog seaborn scikit-learn pathlib joblib
+        pip install -r requirements.txt
         pytest
  
