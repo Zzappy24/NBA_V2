@@ -16,7 +16,7 @@ jobs:
   execute:
     runs-on: ubuntu-latest
     env:
-      PYTHONPATH: ${{ github.workspace }}/NBA_V2
+      PYTHONPATH: .
       
     steps:
     - uses: actions/checkout@v3
