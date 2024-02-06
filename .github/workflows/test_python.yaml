@@ -15,7 +15,8 @@ permissions:
 jobs:
   execute:
     runs-on: ubuntu-latest
-   
+    env:
+      PYTHONPATH: ${{ github.workspace }}/NBA_V2
       
     steps:
     - uses: actions/checkout@v3
@@ -26,8 +27,6 @@ jobs:
     
     - name: Test with pytest
       run: |
-        echo "$HOME"
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
 
         pip install -r requirements.txt
         pytest
