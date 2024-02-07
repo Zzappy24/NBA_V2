@@ -19,12 +19,14 @@ logging.basicConfig(filename='Log/pipeline_log.txt', level=logging.INFO, format=
 
 
 if __name__ == "__main__":
+    print([f for f in os.listdir(RAW_DATA_DIR_TEMP) if '.csv' in f.lower()][0])
+    exit
     succes = True
     step : str
     raws = [f for f in os.listdir(RAW_DATA_DIR) if '.csv' in f.lower()]
     raw_temp = [f for f in os.listdir(RAW_DATA_DIR_TEMP) if '.csv' in f.lower()][0]
     if raw_temp in raws:
-        os.remove([f for f in Path(RAW_DATA_DIR_TEMP).iterdir() if f.is_file()][0])
+        os.remove(f"dataTemp/raw_temp/{[f for f in os.listdir(RAW_DATA_DIR_TEMP) if '.csv' in f.lower()][0]}")
         raise DuplicateTrainingDataError("model already train on this data, be carefull with the choice of the data")
 
     try :
@@ -66,21 +68,20 @@ if __name__ == "__main__":
         write_csv_tranformed(df_transformed)
         dump_model(model)
 
-
     try :
-     os.remove([f for f in Path(RAW_DATA_DIR_TEMP).iterdir() if f.is_file()][0])
+        os.remove(f"dataTemp/raw_temp/{[f for f in os.listdir(RAW_DATA_DIR_TEMP) if '.csv' in f.lower()][0]}")
     except Exception:
         pass
     try :
-        os.remove([f for f in Path(CURATED_DATA_DIR_TEMP).iterdir() if f.is_file()][0])
+        os.remove(f"dataTemp/curated_temp/{[f for f in os.listdir(CURATED_DATA_DIR_TEMP) if '.csv' in f.lower()][0]}")
     except Exception:
         pass
     try :
-        os.remove([f for f in Path(TRANFORMED_DATA_DIR_TEMP).iterdir() if f.is_file()][0])
+        os.remove(f"dataTemp/training_temp/{[f for f in os.listdir(TRANFORMED_DATA_DIR_TEMP) if '.csv' in f.lower()][0]}")
     except Exception:
         pass
     try :
-     os.remove([f for f in Path(MODEL_TEMP_DIR).iterdir() if f.is_file()][0])
+        os.remove(f"dataTemp/model_temp/{[f for f in os.listdir(MODEL_TEMP_DIR) if '.joblib' in f.lower()][0]}")
     except Exception:
         pass
     
