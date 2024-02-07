@@ -40,3 +40,15 @@
 2024-02-04 02:31:52,905 - INFO - transforming successful
 2024-02-04 02:31:52,905 - INFO - train :
 2024-02-04 02:31:52,924 - INFO - training successful
+2024-02-07 20:18:53,866 - INFO - clean :
+2024-02-07 20:18:53,908 - INFO - cleaning successful
+2024-02-07 20:18:53,909 - INFO - transform :
+2024-02-07 20:18:53,958 - INFO - transforming successful
+2024-02-07 20:18:53,958 - INFO - train :
+2024-02-07 20:18:53,984 - INFO - training successful
+2024-02-07 20:21:26,010 - INFO - clean :
+2024-02-07 20:21:26,021 - INFO - cleaning successful
+2024-02-07 20:21:26,021 - INFO - transform :
+2024-02-07 20:21:26,035 - INFO - transforming successful
+2024-02-07 20:21:26,036 - INFO - train :
+2024-02-07 20:21:26,056 - INFO - training successful
