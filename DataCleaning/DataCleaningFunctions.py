@@ -23,17 +23,13 @@ def transform_data(players):
     players["position"] = players.Pos.map({"PG": "Backcourt", "SG": "Backcourt", "SF": "Wing", "SF-PF": "Wing", "PF": "Big", "C": "Big", })
     return players
 
-def date_timestamp():
-    dt = datetime.now()
-    ts = datetime.timestamp(dt)
-    return int(ts)
 
-def write_csv_cleaned(df):
-    df.to_csv(f"{CURATED_DATA_DIR}/curated_data_{date_timestamp()}.csv", index=False)
+def write_csv_cleaned(df, timestamp):
+    df.to_csv(f"{CURATED_DATA_DIR}/curated_data_{timestamp}.csv", index=False)
 
 
-def write_csv_cleaned_temp(df):
-    df.to_csv(f"{CURATED_DATA_DIR_TEMP}/curated_data_temp_{date_timestamp()}.csv", index=False)  
+def write_csv_cleaned_temp(df, timestamp):
+    df.to_csv(f"{CURATED_DATA_DIR_TEMP}/curated_data_temp_{timestamp}.csv", index=False)  
 
 
 def main_cleaning():

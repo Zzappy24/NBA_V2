@@ -11,6 +11,9 @@ import joblib
 from datetime import datetime
 import pandas as pd
 from path.path import TRANFORMED_DATA_DIR_TEMP, MODEL_TEMP_DIR, MODEL_DIR
+from sklearn.metrics import confusion_matrix, f1_score
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 
 
@@ -56,12 +59,31 @@ def training(players):
     model = transformer_pipeline()
     model.fit(X_train_futur_star, y_train_futur_star)
     pts_preds = model.predict(X_test_futur_star)
-    print(f'RMSE for Player prediction: {mean_squared_error(y_test_futur_star, pts_preds, squared=False)}')
+    rmse = mean_squared_error(y_test_futur_star, pts_preds, squared=False)
+
+    # Calculate confusion matrix
+    cm = confusion_matrix(y_test_futur_star, pts_preds)
+    
+    # Calculate F1 score
+    f1 = f1_score(y_test_futur_star, pts_preds)
+    
+    # # Plot confusion matrix
+    # plt.figure(figsize=(8, 6))
+    # sns.heatmap(cm, annot=True, fmt='g', cmap='Blues', cbar=False)
+    
+    # # Annotate plot with F1 score and RMSE
+    # plt.text(0, -0.5, f'F1 Score: {f1:.2f}\nRMSE: {rmse:.2f}', fontsize=12, ha='left')
+    
+    # plt.xlabel('Predicted')
+    # plt.ylabel('Actual')
+    # plt.title('Confusion Matrix')
+    # plt.savefig('updated_confusion_matrix.png')
+    # print(f'RMSE for Player prediction: {mean_squared_error(y_test_futur_star, pts_preds, squared=False)}')
 
     # Save the model to a file
-    return mean_squared_error(y_test_futur_star, pts_preds, squared=False), model
+    return rmse,cm, f1, model
 
-def retrain_model(original_model, new_players):
+def retrain_model(original_model, new_players, ):
     # Assuming new_players has the same structure as the original players DataFrame
     X = new_players[["EFF", "PTS", "Age"]]
     y_futur_star = new_players['future_star']
@@ -74,13 +96,33 @@ def retrain_model(original_model, new_players):
     
     # Make predictions on the test set
     pts_preds = updated_model.predict(X_test_futur_star)
-    
-    # Evaluate the updated model
+
     rmse = mean_squared_error(y_test_futur_star, pts_preds, squared=False)
-    print(f'RMSE for Player prediction: {rmse}')
+
+    # Calculate confusion matrix
+    cm = confusion_matrix(y_test_futur_star, pts_preds)
+    
+    # Calculate F1 score
+    f1 = f1_score(y_test_futur_star, pts_preds)
+    
+    # # Plot confusion matrix
+    # plt.figure(figsize=(8, 6))
+    # sns.heatmap(cm, annot=True, fmt='g', cmap='Blues', cbar=False)
+    
+    # # Annotate plot with F1 score and RMSE
+    # plt.text(0, -0.5, f'F1 Score: {f1:.2f}\nRMSE: {rmse:.2f}', fontsize=12, ha='left')
+    
+    # plt.xlabel('Predicted')
+    # plt.ylabel('Actual')
+    # plt.title('Confusion Matrix')
+    # plt.savefig('updated_confusion_matrix.png')
+    
+    # # Evaluate the updated model
+    # #rmse = mean_squared_error(y_test_futur_star, pts_preds, squared=False)
+    # print(f'RMSE for Player prediction: {rmse}')
 
     # Return the updated model and evaluation metric
-    return rmse, updated_model
+    return rmse,cm,f1, updated_model
 
 
 
@@ -88,13 +130,19 @@ def retrain_model(original_model, new_players):
 
 
 
-def dump_model(model):
-    joblib.dump(model, f'{MODEL_DIR}/model_{int(datetime.timestamp(datetime.now()))}.joblib')
+def dump_model(model, timestamp):
+    joblib.dump(model, f'{MODEL_DIR}/model_{timestamp}.joblib')
 
-def dump_model_temp(model):
-    joblib.dump(model, f'{MODEL_TEMP_DIR}/model_temp_{int(datetime.timestamp(datetime.now()))}.joblib')
+def dump_model_temp(model, timestamp):
+    joblib.dump(model, f'{MODEL_TEMP_DIR}/model_temp_{timestamp}.joblib')
 
-
+def update_statistics_csv(rmse,cm,f1,model):
+    # Create the line to append to the text file
+    new_line = f"{model};{rmse};{f1};{cm}\n"
+    
+    # Append the new line to the text file
+    with open('data/statistics/statistics.csv', 'a') as file:
+        file.write(new_line)
 
 
 def main_training():
@@ -102,8 +150,8 @@ def main_training():
     model_file = list(TRANFORMED_DATA_DIR_TEMP.glob('*.joblib'))
     if len(model_file) >= 1:
         print("adjustement")
-        _, model = retrain_model(model_file[0],df)
+        rmse,cm,f1, model = retrain_model(model_file[0],df)
     else :
-        _, model = training(df)
+        rmse,cm,f1, model = training(df)
     #dump_model_temp(model)
-    return model
+    return rmse,cm,f1,model

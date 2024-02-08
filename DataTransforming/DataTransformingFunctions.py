@@ -30,16 +30,12 @@ def transform_data(players):
 
 
 
-def date_timestamp():
-    dt = datetime.now()
-    ts = datetime.timestamp(dt)
-    return int(ts)
 
-def write_csv_tranformed(df):
-    df.to_csv(f"{TRANFORMED_DATA_DIR}/transformed_data_{date_timestamp()}.csv", index=False)
+def write_csv_tranformed(df, timestamp):
+    df.to_csv(f"{TRANFORMED_DATA_DIR}/transformed_data_{timestamp}.csv", index=False)
 
-def write_csv_transformed_temp(df):
-    df.to_csv(f"{TRANFORMED_DATA_DIR_TEMP}/transformed_data_temp_{date_timestamp()}.csv", index=False)
+def write_csv_transformed_temp(df, timestamp):
+    df.to_csv(f"{TRANFORMED_DATA_DIR_TEMP}/transformed_data_temp_{timestamp}.csv", index=False)
 
 
 
