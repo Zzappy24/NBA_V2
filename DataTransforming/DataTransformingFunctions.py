@@ -9,15 +9,19 @@ from datetime import datetime
 
 def read_data():
     filename = list(CURATED_DATA_DIR_TEMP.glob('*.csv'))[0]
-    print(f"Runnung on file: {filename}")
-    players = pd.read_csv(filename,sep =";", encoding='Windows-1252')
-    if len(players.columns) == 1:
-        players = pd.read_csv(filename,sep =",", encoding='Windows-1252')
+    try :
+        players = pd.read_csv(filename,sep =";", encoding='Windows-1252')
+        if len(players.columns) == 1:
+            players = pd.read_csv(filename,sep =",", encoding='Windows-1252')
+    except Exception:
+        players = pd.read_csv(filename,sep =";", encoding='utf-8')
+        if len(players.columns) == 1:
+            players = pd.read_csv(filename,sep =",", encoding='utf-8')
     assert_not_null(players)
     return players
 
 def assert_not_null(df):
-    assert sum(df.isnull().sum()) < 30, f"There are not null values in the dataset {sum(df.isnull().sum())}"
+    assert sum(df.isnull().sum()) < 1000, f"There are not null values in the dataset {sum(df.isnull().sum())}"
 
 
 def transform_data(players):

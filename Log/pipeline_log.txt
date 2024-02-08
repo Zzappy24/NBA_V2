@@ -154,3 +154,86 @@
 2024-02-08 01:12:24,290 - INFO - transforming successful
 2024-02-08 01:12:24,291 - INFO - train :
 2024-02-08 01:12:24,312 - INFO - training successful
+2024-02-08 11:01:24,414 - INFO - clean :
+2024-02-08 11:01:24,481 - ERROR - error in step clean : 'charmap' codec can't decode byte 0x8d in position 32157: character maps to <undefined>
+2024-02-08 11:05:59,892 - INFO - clean :
+2024-02-08 11:05:59,952 - ERROR - error in step clean : 'charmap' codec can't decode byte 0x8d in position 32157: character maps to <undefined>
+2024-02-08 11:07:06,784 - INFO - clean :
+2024-02-08 11:07:06,828 - ERROR - error in step clean : There are not null values in the dataset
+2024-02-08 11:07:34,852 - INFO - clean :
+2024-02-08 11:07:34,862 - ERROR - error in step clean : There are not null values in the dataset
+2024-02-08 11:07:51,119 - INFO - clean :
+2024-02-08 11:07:51,141 - ERROR - error in step clean : There are not null values in the dataset
+2024-02-08 11:08:34,466 - INFO - clean :
+2024-02-08 11:08:34,482 - ERROR - error in step clean : There are not null values in the dataset
+2024-02-08 11:09:00,882 - INFO - clean :
+2024-02-08 11:09:00,896 - INFO - cleaning successful
+2024-02-08 11:09:00,896 - INFO - transform :
+2024-02-08 11:09:00,898 - ERROR - error in step transform : 'charmap' codec can't decode byte 0x8d in position 40589: character maps to <undefined>
+2024-02-08 11:09:17,050 - INFO - clean :
+2024-02-08 11:09:17,065 - INFO - cleaning successful
+2024-02-08 11:09:17,065 - INFO - transform :
+2024-02-08 11:09:17,066 - ERROR - error in step transform : 'charmap' codec can't decode byte 0x8d in position 40589: character maps to <undefined>
+2024-02-08 11:09:34,460 - INFO - clean :
+2024-02-08 11:09:34,467 - ERROR - error in step clean : 'utf-8' codec can't decode byte 0xf6 in position 21771: invalid start byte
+2024-02-08 11:11:25,794 - INFO - clean :
+2024-02-08 11:11:25,814 - INFO - cleaning successful
+2024-02-08 11:11:25,814 - INFO - transform :
+2024-02-08 11:11:25,842 - INFO - transforming successful
+2024-02-08 11:11:25,842 - INFO - train :
+2024-02-08 11:11:25,867 - INFO - training successful
+2024-02-08 11:13:19,680 - INFO - clean :
+2024-02-08 11:13:19,690 - ERROR - error in step clean : There are not null values in the dataset
+2024-02-08 11:14:15,083 - INFO - clean :
+2024-02-08 11:14:15,098 - INFO - cleaning successful
+2024-02-08 11:14:15,098 - INFO - transform :
+2024-02-08 11:14:15,098 - ERROR - error in step transform : 'charmap' codec can't decode byte 0x8d in position 40589: character maps to <undefined>
+2024-02-08 11:16:10,954 - INFO - clean :
+2024-02-08 11:16:10,970 - INFO - cleaning successful
+2024-02-08 11:16:10,970 - INFO - transform :
+2024-02-08 11:16:10,983 - INFO - transforming successful
+2024-02-08 11:16:10,983 - INFO - train :
+2024-02-08 11:16:11,011 - INFO - training successful
+2024-02-08 11:16:53,683 - INFO - clean :
+2024-02-08 11:16:53,699 - INFO - cleaning successful
+2024-02-08 11:16:53,699 - INFO - transform :
+2024-02-08 11:16:53,717 - INFO - transforming successful
+2024-02-08 11:16:53,717 - INFO - train :
+2024-02-08 11:16:53,736 - ERROR - error in step train : Input X contains NaN.
+LogisticRegression does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2024-02-08 11:36:25,624 - INFO - clean :
+2024-02-08 11:36:25,649 - INFO - cleaning successful
+2024-02-08 11:36:25,649 - INFO - transform :
+2024-02-08 11:36:25,670 - INFO - transforming successful
+2024-02-08 11:36:25,670 - INFO - train :
+2024-02-08 11:36:25,693 - INFO - training successful
+2024-02-08 20:49:49,557 - INFO - clean :
+2024-02-08 20:49:49,588 - INFO - cleaning successful
+2024-02-08 20:49:49,588 - INFO - transform :
+2024-02-08 20:49:49,603 - INFO - transforming successful
+2024-02-08 20:49:49,603 - INFO - train :
+2024-02-08 20:49:49,624 - INFO - training successful
+2024-02-08 21:46:12,663 - INFO - clean :
+2024-02-08 21:46:12,690 - INFO - cleaning successful
+2024-02-08 21:46:12,690 - INFO - transform :
+2024-02-08 21:46:12,720 - INFO - transforming successful
+2024-02-08 21:46:12,720 - INFO - train :
+2024-02-08 21:46:12,754 - INFO - training successful
+2024-02-08 21:49:25,126 - INFO - clean :
+2024-02-08 21:49:25,150 - INFO - cleaning successful
+2024-02-08 21:49:25,150 - INFO - transform :
+2024-02-08 21:49:25,185 - INFO - transforming successful
+2024-02-08 21:49:25,186 - INFO - train :
+2024-02-08 21:49:25,218 - INFO - training successful
+2024-02-08 21:50:28,586 - INFO - clean :
+2024-02-08 21:50:28,614 - INFO - cleaning successful
+2024-02-08 21:50:28,614 - INFO - transform :
+2024-02-08 21:50:28,640 - INFO - transforming successful
+2024-02-08 21:50:28,640 - INFO - train :
+2024-02-08 21:50:28,677 - INFO - training successful
+2024-02-08 23:33:27,771 - INFO - clean :
+2024-02-08 23:33:27,888 - INFO - cleaning successful
+2024-02-08 23:33:27,888 - INFO - transform :
+2024-02-08 23:33:27,926 - INFO - transforming successful
+2024-02-08 23:33:27,926 - INFO - train :
+2024-02-08 23:33:27,977 - INFO - training successful

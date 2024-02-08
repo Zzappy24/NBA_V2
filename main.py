@@ -70,7 +70,7 @@ if __name__ == "__main__":
         logging.info("train :")
         step = "train"
         print("train :")
-        rmse,cm,f1,model = main_training()
+        rmse, cm, f1, accuracy, precision, recall, roc_auc, log_loss_val, mae, r_squared, model = main_training()
         dump_model_temp(model, timestamp)
         logging.info("training successful")
 
@@ -91,7 +91,7 @@ if __name__ == "__main__":
         write_csv_cleaned(df_clean, timestamp)
         write_csv_tranformed(df_transformed, timestamp)
         dump_model(model, timestamp)
-        update_statistics_csv(rmse,cm,f1,f"model_{timestamp}")
+        update_statistics_csv(rmse, cm, f1, accuracy, precision, recall, roc_auc, log_loss_val, mae, r_squared,f"model_{timestamp}")
 
     
     remove_file_temp()
