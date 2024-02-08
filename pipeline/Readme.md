@@ -12,7 +12,7 @@
    ```bash
    conda create --name NBAMlOPS --file requirementsCondaEnv.txt
    ```
-   
+
 
 2. Open a terminal to execute the script.
 
