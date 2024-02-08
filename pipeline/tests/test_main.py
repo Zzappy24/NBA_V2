@@ -67,7 +67,7 @@ class TestUnittest(unittest.TestCase):
 
 
     def test_EndToEnd(self):
-        command1 = ["python", "script1.py"]
+        command1 = ["python", "watcher.py"]
 
         # Create an event to signal the completion of the second thread
         completion_event = threading.Event()
