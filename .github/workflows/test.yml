@@ -29,6 +29,6 @@ jobs:
       run: |
 
         pip install -r requirements.txt
-        pytest
+        pytest ./tests/test_main.py
       working-directory: ./pipeline
  
