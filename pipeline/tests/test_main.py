@@ -11,6 +11,8 @@ from pathlib import Path
 from DataCleaning.DataCleaningFunctions import main_cleaning
 from DataTraining.DataTrainingFunctions import main_training
 from DataTransforming.DataTransformingFunctions import main_transforming
+import signal
+
 
 
 import pandas as pd
@@ -86,7 +88,7 @@ class TestUnittest(unittest.TestCase):
         time.sleep(10)
 
         # Wait for the first thread to finish
-        thread1.join()
+        os.kill(thread2.ident, signal.SIGTERM)
 
         
 
