@@ -53,7 +53,7 @@ class TestUnittest(unittest.TestCase):
 
 
 
-    """def test_training(self):
+    def test_training(self):
         self.move_file()
         df_cleaned = main_cleaning()
         df_cleaned.to_csv(f'{CURATED_DATA_DIR_TEMP}/df_cleaned.csv', index=False)
@@ -62,7 +62,7 @@ class TestUnittest(unittest.TestCase):
         rmse, cm, f1, accuracy, precision, recall, roc_auc, log_loss_val, mae, r_squared, model = main_training()
         self.delete_file(RAW_DATA_DIR_TEMP)
         self.delete_file(CURATED_DATA_DIR_TEMP)
-        self.delete_file(TRANFORMED_DATA_DIR_TEMP)"""
+        self.delete_file(TRANFORMED_DATA_DIR_TEMP)
 
 
     def test_EndToEnd(self):
