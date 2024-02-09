@@ -1,4 +1,3 @@
-from path.path import CURATED_DATA_DIR_TEMP, TRANFORMED_DATA_DIR_TEMP, MODEL_TEMP_DIR, RAW_DATA_DIR_TEMP, RAW_DATA_DIR
 import unittest
 import subprocess
 import sys
@@ -11,18 +10,20 @@ from pathlib import Path
 from DataCleaning.DataCleaningFunctions import main_cleaning
 from DataTraining.DataTrainingFunctions import main_training
 from DataTransforming.DataTransformingFunctions import main_transforming
-import signal
-
-
-
 import pandas as pd
 
 class TestUnittest(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.stop_thread = threading.Event()
+
     def run_subprocess(self, command, completion_event):
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = process.communicate()
+        while process.poll() is None and not self.stop_thread.is_set():
+            time.sleep(1)  # Check every second if the thread should be stopped
+        process.terminate()  # Terminate the subprocess
+        process.communicate()  # Wait for subprocess termination
         completion_event.set()  
-        return process.returncode, stdout, stderr
 
     def move_file_thread(self, completion_event):
         shutil.copy("tests/test.csv", "dataTemp/raw_temp")
@@ -31,19 +32,16 @@ class TestUnittest(unittest.TestCase):
     def move_file(self):
         shutil.copy("tests/test.csv", "dataTemp/raw_temp")
 
-
     def delete_file(self, path):
         try:
             os.remove([f for f in Path(path).iterdir() if f.is_file()][0])
         except Exception:
             pass
 
-
     def test_cleaning(self):
         self.move_file()
         self.assertIsInstance(main_cleaning(), pd.DataFrame)
         self.delete_file(RAW_DATA_DIR_TEMP)
-
 
     def test_transforming(self):
         self.move_file()
@@ -52,8 +50,6 @@ class TestUnittest(unittest.TestCase):
         self.assertIsInstance(main_transforming(), pd.DataFrame)
         self.delete_file(RAW_DATA_DIR_TEMP)
         self.delete_file(CURATED_DATA_DIR_TEMP)
-
-
 
     def test_training(self):
         self.move_file()
@@ -65,7 +61,6 @@ class TestUnittest(unittest.TestCase):
         self.delete_file(RAW_DATA_DIR_TEMP)
         self.delete_file(CURATED_DATA_DIR_TEMP)
         self.delete_file(TRANFORMED_DATA_DIR_TEMP)
-
 
     def test_EndToEnd(self):
         command1 = ["python", "watcher.py"]
@@ -87,13 +82,11 @@ class TestUnittest(unittest.TestCase):
         # Wait for 10 seconds after the second thread finishes
         time.sleep(10)
 
+        # Signal the first thread to stop
+        self.stop_thread.set()
+
         # Wait for the first thread to finish
-        thread1.terminate()
-
         thread1.join()
-
-        
-
 
 if __name__ == '__main__':
     unittest.main()
