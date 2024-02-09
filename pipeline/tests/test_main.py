@@ -53,19 +53,19 @@ class TestUnittest(unittest.TestCase):
 
 
 
-    def test_training(self):
+    """def test_training(self):
         self.move_file()
         df_cleaned = main_cleaning()
         df_cleaned.to_csv(f'{CURATED_DATA_DIR_TEMP}/df_cleaned.csv', index=False)
         df_transformed = main_transforming()
         df_transformed.to_csv(f"{TRANFORMED_DATA_DIR_TEMP}/df_transformed.csv", index=False)
-        main_training()
+        rmse, cm, f1, accuracy, precision, recall, roc_auc, log_loss_val, mae, r_squared, model = main_training()
         self.delete_file(RAW_DATA_DIR_TEMP)
         self.delete_file(CURATED_DATA_DIR_TEMP)
-        self.delete_file(TRANFORMED_DATA_DIR_TEMP)
+        self.delete_file(TRANFORMED_DATA_DIR_TEMP)"""
 
 
-    """def test_EndToEnd(self):
+    def test_EndToEnd(self):
         command1 = ["python", "script1.py"]
 
         # Create an event to signal the completion of the second thread
@@ -86,7 +86,7 @@ class TestUnittest(unittest.TestCase):
         time.sleep(10)
 
         # Wait for the first thread to finish
-        thread1.join()"""
+        thread1.join()
 
         
 
