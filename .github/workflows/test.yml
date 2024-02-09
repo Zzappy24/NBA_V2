@@ -5,15 +5,15 @@ name: Python application
 
 on:
   push:
-    branches: [ "main", "dev" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main", "dev" ]
+    branches: [ "main" ]
 
 permissions:
   contents: read
 
 jobs:
-  execute:
+  pytest:
     runs-on: ubuntu-latest
     env:
       PYTHONPATH: .
@@ -24,11 +24,57 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+
+
+    - name: install requirements
+      run: |
+        pip install -r requirements.txt
+      working-directory: ./pipeline
     
     - name: Test with pytest
       run: |
-
-        pip install -r requirements.txt
         pytest ./tests/test_main.py
       working-directory: ./pipeline
+
+  
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/mlops_project
+
+      - name: Build and push streamlit-app
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: .
+          file: .pipeline/Dockerfile
+          push: true
+          tags: streamlit-app_${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+      
+      - name: Build and push pipeline
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: .
+          file: .visualisation/Dockerfile
+          push: true
+          tags: pipeline_${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          
+
+
+
  
