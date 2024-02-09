@@ -88,7 +88,7 @@ class TestUnittest(unittest.TestCase):
         time.sleep(10)
 
         # Wait for the first thread to finish
-        os.kill(thread2.ident, signal.SIGTERM)
+        os.kill(thread1.ident, signal.SIGTERM)
 
         
 
