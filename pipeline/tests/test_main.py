@@ -11,6 +11,7 @@ from DataCleaning.DataCleaningFunctions import main_cleaning
 from DataTraining.DataTrainingFunctions import main_training
 from DataTransforming.DataTransformingFunctions import main_transforming
 import pandas as pd
+from path.path import CURATED_DATA_DIR_TEMP, TRANFORMED_DATA_DIR_TEMP, MODEL_TEMP_DIR, RAW_DATA_DIR_TEMP, RAW_DATA_DIR
 
 class TestUnittest(unittest.TestCase):
     def __init__(self, *args, **kwargs):
