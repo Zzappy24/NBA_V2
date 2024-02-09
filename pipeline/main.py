@@ -86,7 +86,7 @@ if __name__ == "__main__":
     #time.sleep(10)
     if succes == True:
         file = [f for f in os.listdir(RAW_DATA_DIR_TEMP) if '.csv' in f.lower()][0]
-        shutil.move(f"./dataTemp/raw_temp/{file}", f"./data/raw/{file[0:-4]}_{timestamp}.csv")
+        shutil.move(f"{RAW_DATA_DIR_TEMP}/{file}", f"{RAW_DATA_DIR}/{file[0:-4]}_{timestamp}.csv")
         #Path(f"./dataTemp/raw/{file}").rename(f"./data/raw/{file}")
         write_csv_cleaned(df_clean, timestamp)
         write_csv_tranformed(df_transformed, timestamp)

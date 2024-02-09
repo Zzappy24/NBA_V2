@@ -150,10 +150,15 @@ def dump_model_temp(model, timestamp):
     joblib.dump(model, f'{MODEL_TEMP_DIR}/model_temp_{timestamp}.joblib')
 
 def update_statistics_csv(rmse, cm, f1, accuracy, precision, recall, roc_auc, log_loss_val, mae, r_squared, model):
-    # Create the line to append to the text file
     new_line = f"{model};{rmse};[{cm[0]}{cm[1]}];{f1};{accuracy};{precision};{recall};{roc_auc};{log_loss_val};{mae};{r_squared}\n"
-    # Append the new line to the text file
-    with open('data/statistics/statistics.csv', 'a',encoding="utf8") as file:
+    with open('data/statistics/statistics.csv', 'a+', encoding="utf8") as file:
+        file.seek(0)
+        lines = file.readlines()
+        num_lines = len(lines)
+
+        if num_lines == 0:
+            file.write("model_timestamp;rmse;cm;f1;accuracy;precision;recall;roc_auc;log_loss_val;mae;r_squared\n")
+
         file.write(new_line)
 
 

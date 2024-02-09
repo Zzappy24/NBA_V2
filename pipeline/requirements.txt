@@ -5,7 +5,6 @@ seaborn
 pandas
 scikit-learn
 numpy
-logging
 joblib
 pytest
 pytest-shutil

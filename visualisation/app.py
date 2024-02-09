@@ -8,7 +8,7 @@ import sys
 if len(sys.argv) > 1:
     DATADIR = sys.argv[1]
 else:
-    # Default DATADIR directory if not provided via command-line arguments
+    # local mode
     DATADIR = "."
 
 raw_temp_dir = os.path.join(DATADIR, "dataTemp/raw_temp")
@@ -52,11 +52,13 @@ def display_csv_page():
     st.title("choose pipeline version")
     st.subheader("select a version")
     files = sorted([f[-14:-4] for f in os.listdir(raw_dir) if f.lower().endswith('.csv')])
-    selected_pipeline_version = st.selectbox("select a pipeline versioned with timestamp", files)
+    selected_pipeline_version = st.selectbox("select a pipeline, versioned with timestamp", files)
 
-    
-    st.subheader("raw")
+
     if selected_pipeline_version:
+        st.subheader(f"version {files.index(selected_pipeline_version)+1} selected")
+        st.markdown("***")
+        st.subheader("raw")
         raw_csv_files = [f for f in os.listdir(raw_dir) if f.lower().endswith(f'{selected_pipeline_version}.csv')][0]
         df_raw = read_data(raw_dir, raw_csv_files)
         st.write(df_raw)
@@ -95,17 +97,17 @@ def display_csv_page():
         
 
     else:
-        st.write("Aucun fichier CSV avec un timestamp trouvé dans raw.")
+        st.write("folder raw empty or without CSV file")
 
 
 # Page pour afficher les logs
 def display_logs_page():
-    st.title("Afficher les log")
+    st.title("Display logs")
     log_file_path = os.path.join(log_dir, "pipeline_log.txt")
     if os.path.exists(log_file_path):
         with open(log_file_path, "r") as log_file:
             logs = log_file.read()
-            st.text_area("Logs du fichier pipeline_log.txt", value=logs, height=500)
+            st.text_area("Logs of pipelines :", value=logs, height=500)
     else:
         st.error("Le fichier de logs n'existe pas")
 

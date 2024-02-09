@@ -2,6 +2,7 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import subprocess
+from path.path import RAW_DATA_DIR_TEMP
 
 class MyHandler(FileSystemEventHandler):
     def on_created(self, event):
@@ -26,7 +27,7 @@ def execute_main_script():
         print(f"Error executing main.py: {e}")
 
 if __name__ == "__main__":
-    folder_to_watch = "dataTemp/raw_temp"
+    folder_to_watch = RAW_DATA_DIR_TEMP
     event_handler = MyHandler()
     observer = Observer()
     observer.schedule(event_handler, folder_to_watch, recursive=False)
