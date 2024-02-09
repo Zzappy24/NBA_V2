@@ -1,0 +1,27 @@
+services:
+  streamlit-app:
+    image: mesgasure/mlops_project:main-streamlit-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ${MAIN_PATH}/data/raw:/app/data/raw
+      - ${MAIN_PATH}/dataTemp/raw_temp:/app/dataTemp/raw_temp
+      - ${MAIN_PATH}/data/curated:/app/data/curated
+      - ${MAIN_PATH}/data/training:/app/data/training
+      - ${MAIN_PATH}/Log:/app/Log
+      - ${MAIN_PATH}/data/statistics:/app/data/statistics
+
+  pipeline:
+    image: mesgasure/mlops_project:main-pipeline
+    volumes:
+      - ${MAIN_PATH}/data/raw:/app/data/raw
+      - ${MAIN_PATH}/dataTemp/raw_temp:/app/dataTemp/raw_temp
+      - ${MAIN_PATH}/data/curated:/app/data/curated
+      - ${MAIN_PATH}/data/training:/app/data/training
+      - ${MAIN_PATH}/Log:/app/Log
+      - ${MAIN_PATH}/data/statistics:/app/data/statistics
+      - ${MAIN_PATH}/dataTemp/curated_temp:/app/dataTemp/curated_temp
+      - ${MAIN_PATH}/dataTemp/training_temp:/app/dataTemp/training_temp
+      - ${MAIN_PATH}/dataTemp/model_temp:/app/dataTemp/model_temp
+      - ${MAIN_PATH}/data/model:/app/data/model
+      - ${MAIN_PATH}/data/stats:/app/data/stats
