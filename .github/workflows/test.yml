@@ -65,7 +65,7 @@ jobs:
           context: .
           file: ./pipeline/Dockerfile
           push: true
-          tags: streamlit-app_${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       
       - name: Build and push pipeline
@@ -74,7 +74,7 @@ jobs:
           context: .
           file: ./visualisation/Dockerfile
           push: true
-          tags: pipeline_${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           
 
