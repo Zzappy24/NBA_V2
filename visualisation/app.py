@@ -31,26 +31,20 @@ def read_data(dir, selection):
 
     return df
 
-# Page d'upload de fichier CSV
+# CSV Upload Page 
 def upload_csv_page():
-    st.title("Uploader un fichier CSV dans raw_temp")
-    uploaded_file = st.file_uploader("Uploader un fichier CSV", type=['csv'])
+    st.title("Upload a CSV file to trigger the pipeline")
+    uploaded_file = st.file_uploader("Upload CSV file", type=['csv'])
     if uploaded_file:
         with open(os.path.join(raw_temp_dir, uploaded_file.name), "wb") as f:
             f.write(uploaded_file.getvalue())
-        st.success("Fichier CSV uploadé avec succès dans raw_temp")
+        st.success("CSV file uploaded, the pipeline has started")
 
-def display_png(image_path, key=None):
-    if os.path.exists(image_path):
-        st.image(image_path, caption="Image PNG", use_column_width=True, key=key)
-    else:
-        st.error("L'image spécifiée n'existe pas.")
 
-# Page pour afficher les CSV disponibles
-# Page pour afficher les CSV disponibles
+# Display the Pipelines
 def display_csv_page():
-    st.title("choose pipeline version")
-    st.subheader("select a version")
+    st.title("Choose pipeline version")
+    st.subheader("Select a version")
     files = sorted([f[-14:-4] for f in os.listdir(raw_dir) if f.lower().endswith('.csv')])
     selected_pipeline_version = st.selectbox("select a pipeline, versioned with timestamp", files)
 
@@ -97,7 +91,7 @@ def display_csv_page():
         
 
     else:
-        st.write("folder raw empty or without CSV file")
+        st.write("Folder raw empty or without CSV file")
 
 
 # Page pour afficher les logs
@@ -109,7 +103,7 @@ def display_logs_page():
             logs = log_file.read()
             st.text_area("Logs of pipelines :", value=logs, height=500)
     else:
-        st.error("Le fichier de logs n'existe pas")
+        st.error("Logs files does not exist yet, upload a csv first")
 
 def display_confusion_matrix(confusion_matrix):
     fig, ax = plt.subplots()
@@ -130,11 +124,11 @@ def display_confusion_matrix(confusion_matrix):
 
 # Navigation entre les pages
 pages = {
-    "Uploader un fichier CSV": upload_csv_page,
-    "choose pipeline version": display_csv_page,
-    "Afficher les logs": display_logs_page,
-    #"Afficher les statistiques du modèle": display_statistics_page
+    "Upload a CSV file": upload_csv_page,
+    "Choose pipeline version": display_csv_page,
+    "Display Logs": display_logs_page,
+    #Comparison between model : NEXT FEATURE
 }
 
-selected_page = st.sidebar.selectbox("Sélectionner une page", list(pages.keys()))
+selected_page = st.sidebar.selectbox("Choose a page", list(pages.keys()))
 pages[selected_page]()
