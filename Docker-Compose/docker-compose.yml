@@ -10,7 +10,7 @@ services:
       - ${MAIN_PATH}/data/training:/app/data/training
       - ${MAIN_PATH}/Log:/app/Log
       - ${MAIN_PATH}/data/statistics:/app/data/statistics
-
+ 
   pipeline:
     image: mesgasure/mlops_project:main-pipeline
     volumes:
