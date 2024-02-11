@@ -13,31 +13,38 @@
    features in development, 
    Use Rosetta for x86/amd64 emulation on Apple Silicon
 
-2. Open a terminal and run :
-   choose a path to have your data where you want:
+2. download the docker-compose file 
+   or git clone the all project if you want
+
+3. Open a terminal and run :
+    cd {path_to_the_docker-compose_folder}
+
+   choose a path to have your data where you want, no need to create it, it will be done automatically:
    for exemple /Users/{your_name_user}/Desktop/test_docker
+
+   and then run :
 
    ```bash
    MAIN_PATH=/Users/{your_name_user}/Desktop/test_docker docker-compose up
    ```
 
-3. Open the navigator of your choice and write http://localhost:8501/
+4. Open the navigator of your choice and write http://localhost:8501/
 
-4. now you have access to the streamlit app, and have a visualisation of all the pipeline but with a better interface 🔥🔥
+5. now you have access to the streamlit app, and have a visualisation of all the pipeline but with a better interface 🔥🔥
 
-5. download the CSV files from https://drive.google.com/drive/folders/1L-cMcsmksmkGcWBqszUhzIDM6u7RLlsy
+6. download the CSV files from https://drive.google.com/drive/folders/1L-cMcsmksmkGcWBqszUhzIDM6u7RLlsy
 that contains the data given by https://www.basketball-reference.com/leagues/ ❤️
 
 
-6. Upload a NBA CSV file, OK the pipeline is running now
+7. Upload a NBA CSV file, OK the pipeline is running now
 
-7. you have now the first results of the pipeline. 
+8. you have now the first results of the pipeline. 
    Go to the page : Choose a pipeline version
    each run is versionned by timestamp
 
-8. You can see the data saved for each steap and you have access to a csv line with some interestings metrics (meybe I will add more in the future)
+9. You can see the data saved for each steap and you have access to a csv line with some interestings metrics (meybe I will add more in the future)
 
-9. you also have acces to logs, allowing you to see if an error appears during the training
+10. you also have acces to logs, allowing you to see if an error appears during the training
 indeed, we have a protected pipeline, if an error appears and make the pipeline crash, no data will be saved.
 
 
