@@ -1,0 +1,17 @@
+I created this pipeline for a school purpose.
+  We had to choose a ML model
+  and create a pipeline from scratch
+
+This pipeline is only working with the NBA data available on https://www.basketball-reference.com/leagues/ 
+also available https://drive.google.com/drive/folders/1L-cMcsmksmkGcWBqszUhzIDM6u7RLlsy
+
+if you want to download the files directly.
+
+The project aim to automatically train a model when we had a new file.
+
+to make the application runnable on all devices, we dockerise the pipeline and the visualisation.
+
+You can test the project directly by installing and running the docker-compose file
+
+
+
