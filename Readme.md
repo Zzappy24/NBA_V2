@@ -1,9 +1,5 @@
-# README.md
 
-## Setup Instructions
-
-
-### Use it with docker-compose
+# Use it with docker-compose
 
 1. Install docker
    https://www.docker.com/products/docker-desktop/ 
@@ -50,7 +46,7 @@ indeed, we have a protected pipeline, if an error appears and make the pipeline 
 ![pipeline_video-ezgif com-video-to-gif-converter](https://github.com/Zzappy24/NBA_V2/assets/102799524/87ef75dc-4d01-4f28-b122-fe605c1ec4f2)
 
 
-### Use it in local mode
+# Use it in local mode
 
 0. Git clone the project
 
@@ -77,13 +73,13 @@ indeed, we have a protected pipeline, if an error appears and make the pipeline 
    python app.py {path to the NBA_V2 folder}
    ```
 
-### If you want to modify the code
+# If you want to modify the code
 
 1. Do not forget to create a secret variable DOCKER_USERNAME and DOCKER_PASSWORD
 
 2. Change the link of the images in the docker-compose file, and put your images
 
-## Script Overview
+# Script Overview
 
 - The watcher script monitors the `dataTemp/rawTemp` folder for new file additions every second.
 
