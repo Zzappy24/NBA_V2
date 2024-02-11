@@ -42,7 +42,7 @@ that contains the data given by https://www.basketball-reference.com/leagues/ ‚ù
    Go to the page : Choose a pipeline version
    each run is versionned by timestamp
 
-9. You can see the data saved for each steap and you have access to a csv line with some interestings metrics (meybe I will add more in the future)
+9. You can see the data saved for each steap and you have access to a csv line with some interestings metrics (maybe I will add more in the future)
 
 10. you also have acces to logs, allowing you to see if an error appears during the training
 indeed, we have a protected pipeline, if an error appears and make the pipeline crash, no data will be saved.
