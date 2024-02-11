@@ -43,6 +43,7 @@ that contains the data given by https://www.basketball-reference.com/leagues/ ‚ù
 10. you also have access to logs, allowing you to see if an error appears during the training
 indeed, we have a protected pipeline, if an error appears and make the pipeline crash, no data will be saved.
 
+11. ## DEMONSTATION
 ![pipeline_video-ezgif com-video-to-gif-converter](https://github.com/Zzappy24/NBA_V2/assets/102799524/87ef75dc-4d01-4f28-b122-fe605c1ec4f2)
 
 
